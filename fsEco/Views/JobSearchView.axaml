@@ -74,18 +74,18 @@
 			<!--- Header for the job list -->
 			<Grid Grid.Row="0" HorizontalAlignment="Stretch">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*"  />
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 
-				<TextBlock HorizontalAlignment="Center" Text="From - To " FontWeight="Bold"  Grid.Column="0"/>
-				<TextBlock HorizontalAlignment="Center" Text="Distance (nm)" FontWeight="Bold" Margin="10,0,10,0" Grid.Column="1"/>
-				<TextBlock HorizontalAlignment="Center" Text="Pay" FontWeight="Bold"  Margin="10,0,10,0" Grid.Column="2"/>
-				<TextBlock HorizontalAlignment="Center" Text="Cargo Weight" FontWeight="Bold" Margin="10,0,10,0" Grid.Column="3"/>
-				<TextBlock HorizontalAlignment="Center" Text="Accept" FontWeight="Bold" Margin="10,0,10,0" Grid.Column="4"/>
+				<TextBlock HorizontalAlignment="Center" Text="From - To " FontWeight="Bold" Margin="15,0,15,0" Grid.Column="0"/>
+				<TextBlock HorizontalAlignment="Center" Text="Distance (nm)" FontWeight="Bold" Margin="15,0,15,0" Grid.Column="1"/>
+				<TextBlock HorizontalAlignment="Center" Text="Pay" FontWeight="Bold"  Margin="15,0,15,0" Grid.Column="2"/>
+				<TextBlock HorizontalAlignment="Center" Text="Cargo Weight" FontWeight="Bold" Margin="15,0,15,0" Grid.Column="3"/>
+				<TextBlock HorizontalAlignment="Center" Text="Accept" FontWeight="Bold" Margin="15,0,15,0" Grid.Column="4"/>
 
 			</Grid>
 			

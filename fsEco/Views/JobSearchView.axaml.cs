@@ -3,8 +3,8 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using CsvHelper;
 using fsEco.Classes;
-using fsEco.Data;
-using fsEco.Economy;
+using fsEco.PublicData;
+using fsEco.Economy.JobGeneration;
 using fsEco.Utils.Windows;
 using System;
 using System.Linq;
@@ -68,30 +68,32 @@ public partial class JobSearchView : UserControl
                 var JobItemIcao = new TextBlock
                 {
                     Text = $"{job.FromIcao} - {job.ToIcao}",
+                    Margin = new Avalonia.Thickness(15, 0, 15, 0),
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
                 };
                 var JobItemDistance = new TextBlock
                 {
                     Text = $"{Math.Round(job.Distance,2)} NM",
-                    Margin = new Avalonia.Thickness(10, 0, 10, 0),
+                    Margin = new Avalonia.Thickness(15, 0, 15, 0),
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
                 };
                 var JobItemPay = new TextBlock
                 {
                     Text = $"${job.Pay}",
-                    Margin = new Avalonia.Thickness(10, 0, 10, 0),
+                    Margin = new Avalonia.Thickness(15, 0, 15, 0),
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
                 };
                 var JobItemCargoWeight = new TextBlock
                 {
                     Text = $"{job.CargoWeight} kg",
-                    Margin = new Avalonia.Thickness(10, 0, 10, 0),
+                    Margin = new Avalonia.Thickness(15, 0, 15, 0),
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
                 };
 
                 var JobItemAccept = new Button
                 {
                     Content = "Accept",
-                    Margin = new Avalonia.Thickness(10, 0, 10, 0),
+                    Margin = new Avalonia.Thickness(15, 0, 15, 0),
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     Tag = job
 

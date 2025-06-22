@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace fsEco.Data
+namespace fsEco.PublicData
 {
-    public static class JobsDatabase
+    public static class AirportsDatabase
     {
-        public static List<Job> Jobs { get; set; } = new();
+        public static List<airport> Airports { get; set; } = new();
     }
 }

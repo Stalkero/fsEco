@@ -1,5 +1,5 @@
 ﻿using fsEco.Classes;
-using fsEco.Data;
+using fsEco.PublicData;
 using fsEco.Utils.Windows;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static fsEco.Utils.Windows.ErrorWindow;
 
-namespace fsEco.Economy
+namespace fsEco.Economy.JobGeneration
 {
     public class JobGeneration
     {

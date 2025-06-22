@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using CsvHelper;
 using fsEco.Classes;
-using fsEco.Data;
+using fsEco.PublicData;
 using fsEco.Utils.Windows;
 using System;
 using System.Globalization;
@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using static fsEco.Utils.Windows.ErrorWindow;
-using fsEco.Data;
+using fsEco.PublicData;
 
 
 namespace fsEco.Views;
