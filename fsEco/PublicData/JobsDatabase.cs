@@ -9,6 +9,6 @@ namespace fsEco.PublicData
 {
     public static class JobsDatabase
     {
-        public static List<Job> Jobs { get; set; } = new();
+        public static List<JobListing> Jobs { get; set; } = new();
     }
 }

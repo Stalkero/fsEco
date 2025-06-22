@@ -21,6 +21,8 @@ namespace fsEco.Economy.JobGeneration
             if (from == null) return;
 
             var rng = new Random();
+            int CargoTypesCount = fsEco.PublicData.JobGeneration.CargoTypes.Types.Length;
+            int JobDescriptionCount = fsEco.PublicData.JobGeneration.JobDescription.Descriptions.Length;
 
 
             for (int i = 0; i < attempts; i++)
@@ -33,11 +35,17 @@ namespace fsEco.Economy.JobGeneration
 
                 if (dist >= minDistance && dist <= maxDistance)
                 {
-                    JobsDatabase.Jobs.Add(new Job
+                    string randomCargoType = fsEco.PublicData.JobGeneration.CargoTypes.Types[rng.Next(CargoTypesCount)];
+                    string randomJobDescription = fsEco.PublicData.JobGeneration.JobDescription.Descriptions[rng.Next(JobDescriptionCount)];
+
+
+                    JobsDatabase.Jobs.Add(new JobListing
                     {
                         FromIcao = from.ident,
                         ToIcao = to.ident,
                         Distance = dist,
+                        cargoType = randomCargoType,
+                        Description = randomJobDescription,
                         Pay = rng.Next((int)minPay, (int)(minPay * 1.5)),
                         CargoWeight = rng.Next((int)minCargoWeight, (int)maxCargoWeight),
                     });

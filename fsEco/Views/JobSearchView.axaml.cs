@@ -62,14 +62,16 @@ public partial class JobSearchView : UserControl
                 JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
                 JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
                 JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
+                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
+                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
 
                 JobRow.HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch;
 
                 var JobItemIcao = new TextBlock
                 {
                     Text = $"{job.FromIcao} - {job.ToIcao}",
-                    Margin = new Avalonia.Thickness(15, 0, 15, 0),
-                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
+                    Margin = new Avalonia.Thickness(0, 0, 15, 0),
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                 };
                 var JobItemDistance = new TextBlock
                 {
@@ -83,11 +85,26 @@ public partial class JobSearchView : UserControl
                     Margin = new Avalonia.Thickness(15, 0, 15, 0),
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
                 };
+
+                var JobItemCargoType = new TextBlock
+                {
+                    Text = $"{job.cargoType}",
+                    Margin = new Avalonia.Thickness(50, 0, 50, 0),
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
+                };
+
                 var JobItemCargoWeight = new TextBlock
                 {
                     Text = $"{job.CargoWeight} kg",
                     Margin = new Avalonia.Thickness(15, 0, 15, 0),
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
+                };
+
+                var JobItemDescription = new TextBlock
+                {
+                    Text = job.Description ?? "No description",
+                    Margin = new Avalonia.Thickness(50, 0, 50, 0),
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch
                 };
 
                 var JobItemAccept = new Button
@@ -102,13 +119,17 @@ public partial class JobSearchView : UserControl
                 Grid.SetColumn(JobItemIcao, 0);
                 Grid.SetColumn(JobItemDistance, 1);
                 Grid.SetColumn(JobItemPay, 2);
-                Grid.SetColumn(JobItemCargoWeight, 3);
-                Grid.SetColumn(JobItemAccept, 4);
+                Grid.SetColumn(JobItemCargoType, 3);
+                Grid.SetColumn(JobItemCargoWeight, 4);
+                Grid.SetColumn(JobItemDescription, 5);
+                Grid.SetColumn(JobItemAccept, 6);
 
                 JobRow.Children.Add(JobItemIcao);
                 JobRow.Children.Add(JobItemDistance);
                 JobRow.Children.Add(JobItemPay);
+                JobRow.Children.Add(JobItemCargoType);
                 JobRow.Children.Add(JobItemCargoWeight);
+                JobRow.Children.Add(JobItemDescription);
                 JobRow.Children.Add(JobItemAccept);
 
 
@@ -117,7 +138,7 @@ public partial class JobSearchView : UserControl
 
                 JobItemAccept.Click += (sender, args) =>
                 {
-                    if (sender is Button button && button.Tag is Job selectedJob)
+                    if (sender is Button button && button.Tag is JobListing selectedJob)
                     {
                        
                         AcceptJob(selectedJob);
@@ -128,7 +149,7 @@ public partial class JobSearchView : UserControl
         }
     }
 
-    private void AcceptJob(Job job)
+    private void AcceptJob(JobListing job)
     {
        
         new ErrorWindow($"Accepted job: {job.FromIcao} -> {job.ToIcao}, Distance: {job.Distance}").Show();
