@@ -10,97 +10,69 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
 	</Design.DataContext>
 
+	<Grid x:Name="GRID_Main">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1000" /><!-- Left  Panel where you search for a job-->
+			<ColumnDefinition Width="500" /><!-- Right  Panel with a map-->
+		</Grid.ColumnDefinitions>
+
+
+		<StackPanel x:Name="STK_LEFT" Orientation="Vertical" Grid.Column="0">
+			<TextBlock Text="Search for a job" FontWeight="Bold" HorizontalAlignment="Center"/>
+			<TextBlock Text="Job search parameters:" HorizontalAlignment="Left"/>
+
+			<StackPanel x:Name="STK_JobSearchParametersHeader" Orientation="Horizontal" HorizontalAlignment="Center">
+				
+				<StackPanel Orientation="Vertical">
+					<TextBlock Text="From:" VerticalAlignment="Center" TextAlignment="Center"/>
+					<TextBox x:Name="TXT_Departure_ICAO" Text="EPWA"/>
+					
+					<TextBlock Text="Min Distance: " VerticalAlignment="Center" TextAlignment="Center"/>
+					<NumericUpDown x:Name="TXT_min_distance_nm" Minimum="0" Maximum="10000" Value="0"/>
+
+					<TextBlock Text="Max Distance: " VerticalAlignment="Center" TextAlignment="Center"/>
+					<NumericUpDown x:Name="TXT_max_distance_nm"  Minimum="0" Maximum="10000" Value="200"/>
+				</StackPanel>
+				
+				<StackPanel Margin="15,0,0,0" Orientation="Vertical">
+					<TextBlock Text="Min Pay: " VerticalAlignment="Center" TextAlignment="Center"/>
+					<NumericUpDown x:Name="TXT_min_pay"  Minimum="0" Maximum="10000" Value="1000"/>
+
+					<TextBlock Text="Min Cargo Weight: " VerticalAlignment="Center" TextAlignment="Center"/>
+					<NumericUpDown x:Name="TXT_min_cargo" Minimum="0" Maximum="10000" Value="1000"/>
+
+					<TextBlock Text="Max Cargo Weight: " VerticalAlignment="Center" TextAlignment="Center"/>
+					<NumericUpDown x:Name="TXT_max_cargo" Minimum="0" Maximum="10000" Value="1000"/>
+				</StackPanel>
+			
+			</StackPanel>
+			<Button HorizontalAlignment="Center" x:Name="BTN_SearchJob" Content="Search" Margin="0,10,0,0" Click="BTN_SearchJob_Click"/>
+
+			<TextBlock Text="Jobs that match selected parameters:" HorizontalAlignment="Left"/>
+
+			<!--Here will come the jobs-->
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="From - To " FontWeight="Bold" />
+				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Distance (nm)" FontWeight="Bold" />
+				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Pay" FontWeight="Bold" />
+				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Cargo Type" FontWeight="Bold"  />
+				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Cargo Weight" FontWeight="Bold" />
+				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Description" FontWeight="Bold" />
+				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Accept" FontWeight="Bold" />
+			</StackPanel>
+
+			<StackPanel x:Name="STK_JobList" Orientation="Vertical" HorizontalAlignment="Center">
+			</StackPanel>
+
+		</StackPanel>
+
+		<StackPanel x:Name="STK_RIGHT" Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Center">
+			<!--Some placeholder for a future map-->
+			<TextBlock Text="Map will be here in the future" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+		</StackPanel>
+		
+	</Grid>
 	
-	<StackPanel>
-		<TextBlock Text="Search for a job" FontWeight="Bold" HorizontalAlignment="Center"/>
-		<TextBlock Text="Job search parameters:" HorizontalAlignment="Left"/>
-		
-		<Grid HorizontalAlignment="Center">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="Auto" />
-			</Grid.ColumnDefinitions>
-			
-			<StackPanel Orientation="Horizontal" Grid.Column ="0" Margin="10,0,10,0">
-				<TextBlock Text="From:" VerticalAlignment="Center"/>
-				<TextBox x:Name="TXT_Departure_ICAO" Text="EPWA"/>
-			</StackPanel>
-			<StackPanel Orientation="Horizontal" Grid.Column ="2" Margin="10,0,10,0">
-				<TextBlock Text="Min Distance: " VerticalAlignment="Center"/>
-				<NumericUpDown x:Name="TXT_min_distance_nm" Minimum="0" Maximum="10000" Value="0"/>
-			</StackPanel>
+	
 
-			<StackPanel Orientation="Horizontal" Grid.Column ="3" Margin="10,0,10,0">
-				<TextBlock Text="Max Distance: " VerticalAlignment="Center"/>
-				<NumericUpDown x:Name="TXT_max_distance_nm"  Minimum="0" Maximum="10000" Value="200"/>
-			</StackPanel>
-
-			<StackPanel Orientation="Horizontal" Grid.Column ="4" Margin="10,0,10,0">
-				<TextBlock Text="Min Pay: " VerticalAlignment="Center"/>
-				<NumericUpDown x:Name="TXT_min_pay"  Minimum="0" Maximum="10000" Value="1000"/>
-			</StackPanel>
-
-			<StackPanel Orientation="Horizontal" Grid.Column ="5" Margin="10,0,10,0">
-				<TextBlock Text="Min Cargo Weight: " VerticalAlignment="Center"/>
-				<NumericUpDown x:Name="TXT_min_cargo" Minimum="0" Maximum="10000" Value="1000"/>
-			</StackPanel>
-
-			<StackPanel Orientation="Horizontal" Grid.Column ="6" Margin="10,0,10,0">
-				<TextBlock Text="Max Cargo Weight: " VerticalAlignment="Center"/>
-				<NumericUpDown x:Name="TXT_max_cargo" Minimum="0" Maximum="10000" Value="1000"/>
-			</StackPanel>
-
-			<Button x:Name="BTN_SearchJob" Content="Search" Grid.Column="7" Margin="5,0,5,0" Click="BTN_SearchJob_Click"/>
-		</Grid>
-		<TextBlock Text="Jobs that match selected parameters:" HorizontalAlignment="Left"/>
-		
-		<!--Here will come the jobs-->
-
-		<Grid x:Name="JobGRID" VerticalAlignment="Top" HorizontalAlignment="Center">
-
-
-			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto"/>
-				<RowDefinition Height="Auto"/>
-			</Grid.RowDefinitions>
-
-			
-			<!--- Header for the job list -->
-			<Grid Grid.Row="0" HorizontalAlignment="Stretch">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*"  />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
-				</Grid.ColumnDefinitions>
-
-				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="From - To " FontWeight="Bold"  Grid.Column="0"/>
-				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Distance (nm)" FontWeight="Bold" Grid.Column="1"/>
-				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Pay" FontWeight="Bold"  Grid.Column="2"/>
-				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Cargo Type" FontWeight="Bold"  Grid.Column="3"/>
-				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Cargo Weight" FontWeight="Bold"  Grid.Column="4"/>
-				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Description" FontWeight="Bold"  Grid.Column="5"/>
-				<TextBlock Width = "200" TextAlignment="Center" HorizontalAlignment="Center" Text="Accept" FontWeight="Bold"  Grid.Column="6"/>
-
-			</Grid>
-			
-
-			<StackPanel x:Name="STK_JobList" Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center">
-			</StackPanel>
-		</Grid>
-		
-
-
-		<Button Content="Go Back" HorizontalAlignment="Left" Margin="0,10" Click="BTN_GoBackToMainMenu"/>
-		
-	</StackPanel>
 </UserControl>

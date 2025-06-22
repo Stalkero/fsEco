@@ -55,18 +55,9 @@ public partial class JobSearchView : UserControl
                 //Create a StackPanel for each job item
 
 
-                var JobRow = new Grid();
-
-                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
-                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
-                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
-                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
-                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
-                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
-                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
-                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
-
-                JobRow.HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch;
+                var JobRow = new StackPanel();
+                JobRow.Orientation = Avalonia.Layout.Orientation.Horizontal;    
+                JobRow.HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center;
 
                 var JobItemIcao = new TextBlock
                 {
@@ -121,14 +112,6 @@ public partial class JobSearchView : UserControl
                     Tag = job,
                     Width = 200
                 };
-
-                Grid.SetColumn(JobItemIcao, 0);
-                Grid.SetColumn(JobItemDistance, 1);
-                Grid.SetColumn(JobItemPay, 2);
-                Grid.SetColumn(JobItemCargoType, 3);
-                Grid.SetColumn(JobItemCargoWeight, 4);
-                Grid.SetColumn(JobItemDescription, 5);
-                Grid.SetColumn(JobItemAccept, 6);
 
                 JobRow.Children.Add(JobItemIcao);
                 JobRow.Children.Add(JobItemDistance);
