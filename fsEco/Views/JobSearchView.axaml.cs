@@ -52,13 +52,17 @@ public partial class JobSearchView : UserControl
             {
                 //Create a StackPanel for each job item
 
-                var JobItemPanel = new StackPanel
-                {
-                    Orientation = Avalonia.Layout.Orientation.Horizontal,
-                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
-                };
 
+                var JobRow = new Grid();
 
+                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
+                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
+                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
+                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
+                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
+                JobRow.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
+
+                JobRow.HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch;
 
                 var JobItemIcao = new TextBlock
                 {
@@ -66,18 +70,21 @@ public partial class JobSearchView : UserControl
                 };
                 var JobItemDistance = new TextBlock
                 {
-                    Text = $"Distance: {Math.Round(job.Distance,2)} NM",
-                    Margin = new Avalonia.Thickness(10, 0, 0, 0),
+                    Text = $"{Math.Round(job.Distance,2)} NM",
+                    Margin = new Avalonia.Thickness(10, 0, 10, 0),
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
                 };
                 var JobItemPay = new TextBlock
                 {
-                    Text = $"Pay: ${job.Pay}",
-                    Margin = new Avalonia.Thickness(10, 0, 0, 0),
+                    Text = $"${job.Pay}",
+                    Margin = new Avalonia.Thickness(10, 0, 10, 0),
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
                 };
                 var JobItemCargoWeight = new TextBlock
                 {
-                    Text = $"Cargo Weight: {job.CargoWeight} kg",
-                    Margin = new Avalonia.Thickness(10, 0, 0, 0),
+                    Text = $"{job.CargoWeight} kg",
+                    Margin = new Avalonia.Thickness(10, 0, 10, 0),
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
                 };
 
                 Grid.SetColumn(JobItemIcao, 0);
@@ -85,14 +92,14 @@ public partial class JobSearchView : UserControl
                 Grid.SetColumn(JobItemPay, 2);
                 Grid.SetColumn(JobItemCargoWeight, 3);
 
-                JobItemPanel.Children.Add(JobItemIcao);
-                JobItemPanel.Children.Add(JobItemDistance);
-                JobItemPanel.Children.Add(JobItemPay);
-                JobItemPanel.Children.Add(JobItemCargoWeight);
+                JobRow.Children.Add(JobItemIcao);
+                JobRow.Children.Add(JobItemDistance);
+                JobRow.Children.Add(JobItemPay);
+                JobRow.Children.Add(JobItemCargoWeight);
 
 
 
-                STK_JobList.Children.Add(JobItemPanel);
+                STK_JobList.Children.Add(JobRow);
             }
         }
     }
