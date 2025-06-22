@@ -8,6 +8,7 @@ using fsEco.Economy.JobGeneration;
 using fsEco.Utils.Windows;
 using System;
 using System.Linq;
+using Avalonia.Media;
 
 namespace fsEco.Views;
 
@@ -70,50 +71,55 @@ public partial class JobSearchView : UserControl
                 var JobItemIcao = new TextBlock
                 {
                     Text = $"{job.FromIcao} - {job.ToIcao}",
-                    Margin = new Avalonia.Thickness(0, 0, 15, 0),
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                    TextAlignment = TextAlignment.Center,
+                    Width = 200
                 };
                 var JobItemDistance = new TextBlock
                 {
-                    Text = $"{Math.Round(job.Distance,2)} NM",
-                    Margin = new Avalonia.Thickness(15, 0, 15, 0),
-                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
+                    Text = $"{Math.Round(job.Distance,2)}",
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                    TextAlignment = TextAlignment.Center,
+                    Width = 200
                 };
                 var JobItemPay = new TextBlock
                 {
                     Text = $"${job.Pay}",
-                    Margin = new Avalonia.Thickness(15, 0, 15, 0),
-                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                    TextAlignment = TextAlignment.Center,
+                    Width = 200
                 };
 
                 var JobItemCargoType = new TextBlock
                 {
                     Text = $"{job.cargoType}",
-                    Margin = new Avalonia.Thickness(50, 0, 50, 0),
-                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                    TextAlignment = TextAlignment.Center,
+                    Width = 200
                 };
 
                 var JobItemCargoWeight = new TextBlock
                 {
                     Text = $"{job.CargoWeight} kg",
-                    Margin = new Avalonia.Thickness(15, 0, 15, 0),
-                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                    TextAlignment = TextAlignment.Center,
+                    Width = 200
                 };
 
                 var JobItemDescription = new TextBlock
                 {
                     Text = job.Description ?? "No description",
-                    Margin = new Avalonia.Thickness(50, 0, 50, 0),
-                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                    TextAlignment = TextAlignment.Center,
+                    Width = 200
                 };
 
                 var JobItemAccept = new Button
                 {
                     Content = "Accept",
-                    Margin = new Avalonia.Thickness(15, 0, 15, 0),
-                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
-                    Tag = job
-
+                    HorizontalContentAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                    Tag = job,
+                    Width = 200
                 };
 
                 Grid.SetColumn(JobItemIcao, 0);
