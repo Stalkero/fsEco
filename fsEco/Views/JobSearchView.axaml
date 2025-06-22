@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1500" d:DesignHeight="700"
+             x:Class="fsEco.Views.JobSearchView">
+
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+	</Design.DataContext>
+
+	
+	<StackPanel>
+		<TextBlock Text="Search for a job" FontWeight="Bold" HorizontalAlignment="Center"/>
+		<TextBlock Text="Job search parameters:" HorizontalAlignment="Left"/>
+		
+		<Grid HorizontalAlignment="Center">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			
+			<StackPanel Orientation="Horizontal" Grid.Column ="0" Margin="5,0,5,0">
+				<TextBlock Text="From:" VerticalAlignment="Center"/>
+				<TextBox Text="EPWA"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Grid.Column ="1" Margin="5,0,5,0">
+				<TextBlock Text="To: " VerticalAlignment="Center"/>
+				<TextBox Text="EPWA"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Grid.Column ="2" Margin="5,0,5,0">
+				<TextBlock Text="Min Distance: " VerticalAlignment="Center"/>
+				<NumericUpDown Minimum="0" Maximum="10000" Value="0"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Grid.Column ="3" Margin="5,0,5,0">
+				<TextBlock Text="Max Distance: " VerticalAlignment="Center"/>
+				<NumericUpDown Minimum="0" Maximum="10000" Value="1000"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Grid.Column ="4" Margin="5,0,5,0">
+				<TextBlock Text="Min Pay: " VerticalAlignment="Center"/>
+				<NumericUpDown Minimum="0" Maximum="10000" Value="1000"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Grid.Column ="5" Margin="5,0,5,0">
+				<TextBlock Text="Min Cargo Weight: " VerticalAlignment="Center"/>
+				<NumericUpDown Minimum="0" Maximum="10000" Value="1000"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Grid.Column ="6" Margin="5,0,5,0">
+				<TextBlock Text="Max Cargo Weight: " VerticalAlignment="Center"/>
+				<NumericUpDown Minimum="0" Maximum="10000" Value="1000"/>
+			</StackPanel>
+
+			<Button Content="Search" Grid.Column="7" Margin="5,0,5,0"/>
+		</Grid>
+		<TextBlock Text="Jobs that match selected parameters:" HorizontalAlignment="Left"/>
+		
+		<!--Here will come the jobs-->
+		<StackPanel>
+		</StackPanel>
+
+		<Button Content="Go Back" HorizontalAlignment="Left" Margin="0,10" Click="BTN_GoBackToMainMenu"/>
+		
+	</StackPanel>
+</UserControl>

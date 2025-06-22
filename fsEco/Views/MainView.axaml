@@ -44,18 +44,18 @@
 				<TextBlock Text="Balance" FontWeight="Bold"/>
 				<TextBlock Text="$12,000"/>
 				<TextBlock Text="$200/hr"/>
-			</StackPanel>
+			</StackPanel>	
 		</Grid>
 		
 		<StackPanel Margin="0,15" HorizontalAlignment="Center">
 			<TextBlock Text="Quick Actions" HorizontalAlignment="Center" FontWeight="Bold"/>
 			<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 				<WrapPanel Margin="0,5">
-					<Button> Start Flight</Button>
-					<Button> View Logbook</Button>
-					<Button> Available jobs</Button>
-					<Button> Hangar</Button>
-					<Button> My airline</Button>
+					<Button Content="Start Flight"/>
+					<Button Content="View Logbook"/>
+					<Button x:Name="BTN_JobSearch" Content="Available jobs" Click="BTN_JobSearch_Click"/>
+					<Button Content="Hangar"/>
+					<Button Content="My airline"/>
 				</WrapPanel>
 			</ScrollViewer>
 		</StackPanel>

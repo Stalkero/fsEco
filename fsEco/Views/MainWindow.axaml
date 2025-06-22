@@ -8,5 +8,5 @@
         x:Class="fsEco.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="fsEco">
-        <views:MainView />
+	    <ContentControl x:Name="MainContent" />
 </Window>
