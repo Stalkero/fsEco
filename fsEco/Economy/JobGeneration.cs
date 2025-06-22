@@ -12,10 +12,10 @@ namespace fsEco.Economy
 {
     public class JobGeneration
     {
-        public void generateOneJob(string depICAO, string arrICAO, double minDistance, double maxDistance, double minPay, double minCargoWeight, double maxCargoWeight)
+        public void generateOneJob(string depICAO, double minDistance, double maxDistance, double minPay, double minCargoWeight, double maxCargoWeight)
         {
 
-            int attempts = 100;
+            int attempts = 2000;
 
             var from = AirportsDatabase.Airports.FirstOrDefault(a => a.ident == depICAO);
             if (from == null) return;

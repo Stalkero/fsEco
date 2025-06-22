@@ -27,37 +27,31 @@
 				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 			
-			<StackPanel Orientation="Horizontal" Grid.Column ="0" Margin="5,0,5,0">
+			<StackPanel Orientation="Horizontal" Grid.Column ="0" Margin="10,0,10,0">
 				<TextBlock Text="From:" VerticalAlignment="Center"/>
 				<TextBox x:Name="TXT_Departure_ICAO" Text="EPWA"/>
 			</StackPanel>
-
-			<StackPanel Orientation="Horizontal" Grid.Column ="1" Margin="5,0,5,0">
-				<TextBlock Text="To: " VerticalAlignment="Center"/>
-				<TextBox x:Name="TXT_Arrival_ICAO" Text="EPWA"/>
-			</StackPanel>
-
-			<StackPanel Orientation="Horizontal" Grid.Column ="2" Margin="5,0,5,0">
+			<StackPanel Orientation="Horizontal" Grid.Column ="2" Margin="10,0,10,0">
 				<TextBlock Text="Min Distance: " VerticalAlignment="Center"/>
 				<NumericUpDown x:Name="TXT_min_distance_nm" Minimum="0" Maximum="10000" Value="0"/>
 			</StackPanel>
 
-			<StackPanel Orientation="Horizontal" Grid.Column ="3" Margin="5,0,5,0">
+			<StackPanel Orientation="Horizontal" Grid.Column ="3" Margin="10,0,10,0">
 				<TextBlock Text="Max Distance: " VerticalAlignment="Center"/>
-				<NumericUpDown x:Name="TXT_max_distance_nm"  Minimum="0" Maximum="10000" Value="1000"/>
+				<NumericUpDown x:Name="TXT_max_distance_nm"  Minimum="0" Maximum="10000" Value="200"/>
 			</StackPanel>
 
-			<StackPanel Orientation="Horizontal" Grid.Column ="4" Margin="5,0,5,0">
+			<StackPanel Orientation="Horizontal" Grid.Column ="4" Margin="10,0,10,0">
 				<TextBlock Text="Min Pay: " VerticalAlignment="Center"/>
 				<NumericUpDown x:Name="TXT_min_pay"  Minimum="0" Maximum="10000" Value="1000"/>
 			</StackPanel>
 
-			<StackPanel Orientation="Horizontal" Grid.Column ="5" Margin="5,0,5,0">
+			<StackPanel Orientation="Horizontal" Grid.Column ="5" Margin="10,0,10,0">
 				<TextBlock Text="Min Cargo Weight: " VerticalAlignment="Center"/>
 				<NumericUpDown x:Name="TXT_min_cargo" Minimum="0" Maximum="10000" Value="1000"/>
 			</StackPanel>
 
-			<StackPanel Orientation="Horizontal" Grid.Column ="6" Margin="5,0,5,0">
+			<StackPanel Orientation="Horizontal" Grid.Column ="6" Margin="10,0,10,0">
 				<TextBlock Text="Max Cargo Weight: " VerticalAlignment="Center"/>
 				<NumericUpDown x:Name="TXT_max_cargo" Minimum="0" Maximum="10000" Value="1000"/>
 			</StackPanel>
@@ -69,12 +63,7 @@
 		<!--Here will come the jobs-->
 
 		<Grid x:Name="JobGRID" VerticalAlignment="Top" HorizontalAlignment="Center">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="2*" />
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="*" />
-			</Grid.ColumnDefinitions>
+
 
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto"/>
@@ -89,12 +78,14 @@
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 
 				<TextBlock HorizontalAlignment="Center" Text="From - To " FontWeight="Bold"  Grid.Column="0"/>
-				<TextBlock HorizontalAlignment="Center" Text="Distance (nm)" FontWeight="Bold" Margin="10,0,0,0" Grid.Column="1"/>
-				<TextBlock HorizontalAlignment="Center" Text="Pay" FontWeight="Bold"  Margin="10,0,0,0" Grid.Column="2"/>
-				<TextBlock HorizontalAlignment="Center" Text="Cargo Weight" FontWeight="Bold" Margin="10,0,0,0" Grid.Column="3"/>
+				<TextBlock HorizontalAlignment="Center" Text="Distance (nm)" FontWeight="Bold" Margin="10,0,10,0" Grid.Column="1"/>
+				<TextBlock HorizontalAlignment="Center" Text="Pay" FontWeight="Bold"  Margin="10,0,10,0" Grid.Column="2"/>
+				<TextBlock HorizontalAlignment="Center" Text="Cargo Weight" FontWeight="Bold" Margin="10,0,10,0" Grid.Column="3"/>
+				<TextBlock HorizontalAlignment="Center" Text="Accept" FontWeight="Bold" Margin="10,0,10,0" Grid.Column="4"/>
 
 			</Grid>
 			
