@@ -1,6 +1,8 @@
 ﻿using Avalonia.Controls;
+using fsEco.Utils.Windows;
 using Microsoft.VisualBasic;
 using System.Windows;
+using static fsEco.Utils.Windows.ErrorWindow;
 
 namespace fsEco.Views;
 
