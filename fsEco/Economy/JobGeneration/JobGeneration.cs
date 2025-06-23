@@ -16,14 +16,17 @@ namespace fsEco.Economy.JobGeneration
         {
 
             int attempts = 2000;
+            int randomCargoTypeCount;
+            string randomCargoType;
+            int minJobTypeCargoWeight;
+            int maxJobTypeCargoWeight;
+            int finalcargoWeight;
 
             var from = AirportsDatabase.Airports.FirstOrDefault(a => a.ident == depICAO);
             if (from == null) return;
 
             var rng = new Random();
-            int CargoTypesCount = fsEco.PublicData.JobGeneration.CargoTypes.Types.Length;
-            int JobDescriptionCount = fsEco.PublicData.JobGeneration.JobDescription.Descriptions.Length;
-
+            int JobTypesCount = fsEco.PublicData.JobGeneration.JobTypes.JobTypesList.JobList.Length;
 
             for (int i = 0; i < attempts; i++)
             {
@@ -35,20 +38,141 @@ namespace fsEco.Economy.JobGeneration
 
                 if (dist >= minDistance && dist <= maxDistance)
                 {
-                    string randomCargoType = fsEco.PublicData.JobGeneration.CargoTypes.Types[rng.Next(CargoTypesCount)];
-                    string randomJobDescription = fsEco.PublicData.JobGeneration.JobDescription.Descriptions[rng.Next(JobDescriptionCount)];
+                    
+                    string randomJobType = fsEco.PublicData.JobGeneration.JobTypes.JobTypesList.JobList[rng.Next(JobTypesCount)];
 
-
-                    JobsDatabase.Jobs.Add(new JobListing
+                    switch (randomJobType)
                     {
-                        FromIcao = from.ident,
-                        ToIcao = to.ident,
-                        Distance = dist,
-                        cargoType = randomCargoType,
-                        Description = randomJobDescription,
-                        Pay = rng.Next((int)minPay, (int)(minPay * 1.5)),
-                        CargoWeight = rng.Next((int)minCargoWeight, (int)maxCargoWeight),
-                    });
+                        case "CargoTransport":
+                            randomCargoTypeCount = fsEco.PublicData.JobGeneration.JobTypes.CargoTransport.CargoTypes.Types.Length;
+                            randomCargoType = fsEco.PublicData.JobGeneration.JobTypes.CargoTransport.CargoTypes.Types[rng.Next(randomCargoTypeCount)];
+
+                            int randomJobDescriptionCount = fsEco.PublicData.JobGeneration.JobTypes.CargoTransport.JobDesciption.Descriptions.Length;
+                            string randomJobDescription = fsEco.PublicData.JobGeneration.JobTypes.CargoTransport.JobDesciption.Descriptions[rng.Next(randomJobDescriptionCount)];
+
+                            minPay = 1000;
+                            minJobTypeCargoWeight = 200;
+                            maxJobTypeCargoWeight = 50000;
+
+
+                            finalcargoWeight = rng.Next((int)minJobTypeCargoWeight, (int)maxJobTypeCargoWeight);
+
+                            if (finalcargoWeight <= maxCargoWeight || finalcargoWeight >= minCargoWeight)
+                            {
+                                JobsDatabase.Jobs.Add(new JobListing
+                                {
+                                    FromIcao = from.ident,
+                                    ToIcao = to.ident,
+                                    Distance = dist,
+                                    JobType = randomJobType,
+                                    cargoType = randomCargoType,
+                                    Description = randomJobDescription,
+                                    Pay = rng.Next((int)minPay, (int)(minPay * 1.5)),
+                                    CargoWeight = rng.Next((int)minCargoWeight, (int)maxCargoWeight),
+                                });
+                            }
+
+
+                            break;
+
+
+
+
+
+                        case "Civilian":
+                            randomJobDescriptionCount = fsEco.PublicData.JobGeneration.JobTypes.Civilian.JobDescription.Descriptions.Length;
+                            randomJobDescription = fsEco.PublicData.JobGeneration.JobTypes.Civilian.JobDescription.Descriptions[rng.Next(randomJobDescriptionCount)];
+
+                            minPay = 500;
+                            minJobTypeCargoWeight = 50;
+                            maxJobTypeCargoWeight = 500;
+
+                            finalcargoWeight = rng.Next((int)minJobTypeCargoWeight, (int)maxJobTypeCargoWeight);
+
+                            if (finalcargoWeight <= maxCargoWeight || finalcargoWeight >= minCargoWeight)
+                            {
+                                JobsDatabase.Jobs.Add(new JobListing
+                                {
+                                    FromIcao = from.ident,
+                                    ToIcao = to.ident,
+                                    Distance = dist,
+                                    JobType = randomJobType,
+                                    cargoType = "PAX",
+                                    Description = randomJobDescription,
+                                    Pay = rng.Next((int)minPay, (int)(minPay * 1.5)),
+                                    CargoWeight = rng.Next((int)minCargoWeight, (int)maxCargoWeight),
+                                });
+                            }
+
+
+
+                            break;
+
+
+
+
+                        case "Medical":
+                            randomJobDescriptionCount = fsEco.PublicData.JobGeneration.JobTypes.Medical.JobDescription.Descriptions.Length;
+                            randomJobDescription = fsEco.PublicData.JobGeneration.JobTypes.Medical.JobDescription.Descriptions[rng.Next(randomJobDescriptionCount)];
+
+                            minPay = 1000;
+                            minJobTypeCargoWeight = 100;
+                            maxJobTypeCargoWeight = 10000;
+
+                            finalcargoWeight = rng.Next((int)minJobTypeCargoWeight, (int)maxJobTypeCargoWeight);
+
+                            if (finalcargoWeight <= maxCargoWeight || finalcargoWeight >= minCargoWeight)
+                            {
+                                JobsDatabase.Jobs.Add(new JobListing
+                                {
+                                    FromIcao = from.ident,
+                                    ToIcao = to.ident,
+                                    Distance = dist,
+                                    JobType = randomJobType,
+                                    cargoType = "PAX",
+                                    Description = randomJobDescription,
+                                    Pay = rng.Next((int)minPay, (int)(minPay * 1.5)),
+                                    CargoWeight = rng.Next((int)minCargoWeight, (int)maxCargoWeight),
+                                });
+                            }
+
+
+                            break;
+
+
+                        case "Military":
+                            randomJobDescriptionCount = fsEco.PublicData.JobGeneration.JobTypes.Military.JobDescription.Descriptions.Length;
+                            randomJobDescription = fsEco.PublicData.JobGeneration.JobTypes.Military.JobDescription.Descriptions[rng.Next(randomJobDescriptionCount)];
+
+                            minPay = 1500;
+                            minJobTypeCargoWeight = 200;
+                            maxJobTypeCargoWeight = 20000;
+
+                            finalcargoWeight = rng.Next((int)minJobTypeCargoWeight, (int)maxJobTypeCargoWeight);
+
+                            if (finalcargoWeight <= maxCargoWeight || finalcargoWeight >= minCargoWeight)
+                            {
+                                JobsDatabase.Jobs.Add(new JobListing
+                                {
+                                    FromIcao = from.ident,
+                                    ToIcao = to.ident,
+                                    Distance = dist,
+                                    JobType = randomJobType,
+                                    cargoType = "PAX",
+                                    Description = randomJobDescription,
+                                    Pay = rng.Next((int)minPay, (int)(minPay * 1.5)),
+                                    CargoWeight = rng.Next((int)minCargoWeight, (int)maxCargoWeight),
+                                });
+                            }
+                            break;
+                        default:
+                            continue; // Skip if job type is not recognized
+                    }
+
+
+
+
+
                 }
             }
 

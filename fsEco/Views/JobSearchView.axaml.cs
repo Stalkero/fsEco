@@ -56,29 +56,41 @@ public partial class JobSearchView : UserControl
 
 
                 var JobRow = new StackPanel();
+
                 JobRow.Orientation = Avalonia.Layout.Orientation.Horizontal;    
                 JobRow.HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center;
+                JobRow.Margin = new Avalonia.Thickness(0,10);
+
 
                 var JobItemIcao = new TextBlock
                 {
                     Text = $"{job.FromIcao} - {job.ToIcao}",
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     TextAlignment = TextAlignment.Center,
-                    Width = 200
+                    Width = 150
                 };
                 var JobItemDistance = new TextBlock
                 {
                     Text = $"{Math.Round(job.Distance,2)}",
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     TextAlignment = TextAlignment.Center,
-                    Width = 200
+                    Width = 100
                 };
+
                 var JobItemPay = new TextBlock
                 {
                     Text = $"${job.Pay}",
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     TextAlignment = TextAlignment.Center,
-                    Width = 200
+                    Width = 150
+                };
+
+                var JobItemJobType = new TextBlock
+                {
+                    Text = $"{job.JobType}",
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                    TextAlignment = TextAlignment.Center,
+                    Width = 150
                 };
 
                 var JobItemCargoType = new TextBlock
@@ -86,7 +98,7 @@ public partial class JobSearchView : UserControl
                     Text = $"{job.cargoType}",
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     TextAlignment = TextAlignment.Center,
-                    Width = 200
+                    Width = 150
                 };
 
                 var JobItemCargoWeight = new TextBlock
@@ -94,7 +106,7 @@ public partial class JobSearchView : UserControl
                     Text = $"{job.CargoWeight} kg",
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     TextAlignment = TextAlignment.Center,
-                    Width = 200
+                    Width = 150
                 };
 
                 var JobItemDescription = new TextBlock
@@ -102,7 +114,8 @@ public partial class JobSearchView : UserControl
                     Text = job.Description ?? "No description",
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     TextAlignment = TextAlignment.Center,
-                    Width = 200
+                    Width = 150,
+                    TextWrapping = Avalonia.Media.TextWrapping.Wrap
                 };
 
                 var JobItemAccept = new Button
@@ -110,12 +123,13 @@ public partial class JobSearchView : UserControl
                     Content = "Accept",
                     HorizontalContentAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     Tag = job,
-                    Width = 200
+                    Width = 100
                 };
 
                 JobRow.Children.Add(JobItemIcao);
                 JobRow.Children.Add(JobItemDistance);
                 JobRow.Children.Add(JobItemPay);
+                JobRow.Children.Add(JobItemJobType);
                 JobRow.Children.Add(JobItemCargoType);
                 JobRow.Children.Add(JobItemCargoWeight);
                 JobRow.Children.Add(JobItemDescription);
