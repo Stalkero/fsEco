@@ -44,6 +44,17 @@
 					<TextBlock Text="Max Cargo Weight: " VerticalAlignment="Center" TextAlignment="Center"/>
 					<NumericUpDown x:Name="TXT_max_cargo" Minimum="0" Maximum="10000" Value="1000"/>
 				</StackPanel>
+				
+				<StackPanel Margin="15,0,0,0" Orientation="Vertical">
+					<TextBlock Text="Aircraft type: " VerticalAlignment="Center" TextAlignment="Center"/>
+					<ComboBox x:Name="CB_AircraftType" Width="150" SelectedIndex="0">
+						<ComboBoxItem Content="All" />
+						<ComboBoxItem Content="Passenger"/>
+						<ComboBoxItem Content="Cargo"/>
+						<ComboBoxItem Content="Utility"/>
+						<ComboBoxItem Content="VIP"/>
+					</ComboBox>
+				</StackPanel>
 			
 			</StackPanel>
 			<Button HorizontalAlignment="Center" x:Name="BTN_SearchJob" Content="Search" Margin="0,10,0,0" Click="BTN_SearchJob_Click"/>
@@ -62,8 +73,12 @@
 				<TextBlock Width = "100" TextAlignment="Center" HorizontalAlignment="Center" Text="Accept" FontWeight="Bold" />
 			</StackPanel>
 
-			<StackPanel x:Name="STK_JobList" Orientation="Vertical" HorizontalAlignment="Center">
-			</StackPanel>
+			
+			<ScrollViewer Height="600" Width="1200">
+				<StackPanel x:Name="STK_JobList" Orientation="Vertical" HorizontalAlignment="Center">
+				</StackPanel>
+			</ScrollViewer>
+
 
 		</StackPanel>
 

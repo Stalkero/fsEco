@@ -42,8 +42,16 @@ public partial class JobSearchView : UserControl
         double minPay = double.Parse(TXT_min_pay.Text);
         double minCargoWeight = double.Parse(TXT_min_cargo.Text);
         double maxCargoWeight = double.Parse(TXT_max_cargo.Text);
+        int aircraftType = CB_AircraftType.SelectedIndex;
+        /*
+        				<ComboBoxItem Content="All" /> 0
+						<ComboBoxItem Content="Passenger"/> 1
+						<ComboBoxItem Content="Cargo"/> 2
+						<ComboBoxItem Content="Utility"/> 3
+						<ComboBoxItem Content="VIP"/> 4
+        */
 
-        jobGeneration.generateOneJob(depICAO, minDistance, maxDistance, minPay, minCargoWeight, maxCargoWeight);
+        jobGeneration.generateOneJob(depICAO, minDistance, maxDistance, minPay, minCargoWeight, maxCargoWeight,aircraftType);
 
 
         if (JobsDatabase.Jobs != null)
@@ -60,6 +68,7 @@ public partial class JobSearchView : UserControl
                 JobRow.Orientation = Avalonia.Layout.Orientation.Horizontal;    
                 JobRow.HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center;
                 JobRow.Margin = new Avalonia.Thickness(0,10);
+                JobRow.Width = 1000;
 
 
                 var JobItemIcao = new TextBlock

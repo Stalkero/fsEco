@@ -12,7 +12,7 @@ namespace fsEco.Economy.JobGeneration
 {
     public class JobGeneration
     {
-        public void generateOneJob(string depICAO, double minDistance, double maxDistance, double minPay, double minCargoWeight, double maxCargoWeight)
+        public void generateOneJob(string depICAO, double minDistance, double maxDistance, double minPay, double minCargoWeight, double maxCargoWeight, int aircraftType)
         {
 
             int attempts = 2000;
@@ -51,9 +51,34 @@ namespace fsEco.Economy.JobGeneration
                             string randomJobDescription = fsEco.PublicData.JobGeneration.JobTypes.CargoTransport.JobDesciption.Descriptions[rng.Next(randomJobDescriptionCount)];
 
                             minPay = 1000;
-                            minJobTypeCargoWeight = 200;
-                            maxJobTypeCargoWeight = 50000;
 
+                            switch (aircraftType)
+                            {
+                                case 0: // All
+                                    minJobTypeCargoWeight = 100;
+                                    maxJobTypeCargoWeight = 50000;
+                                    break;
+                                case 1: // Passenger
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 1500;
+                                    break;
+                                case 2: // Cargo
+                                    minJobTypeCargoWeight = 200;
+                                    maxJobTypeCargoWeight = 50000;
+                                    break;
+                                case 3: // Utility
+                                    minJobTypeCargoWeight = 100;
+                                    maxJobTypeCargoWeight = 10000;
+                                    break;
+                                case 4: // VIP
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 3000;
+                                    break;
+                                default:
+                                    minJobTypeCargoWeight = 100;
+                                    maxJobTypeCargoWeight = 50000;
+                                    break;
+                            }
 
                             finalcargoWeight = rng.Next((int)minJobTypeCargoWeight, (int)maxJobTypeCargoWeight);
 
@@ -71,8 +96,6 @@ namespace fsEco.Economy.JobGeneration
                                     CargoWeight = rng.Next((int)minCargoWeight, (int)maxCargoWeight),
                                 });
                             }
-
-
                             break;
 
 
@@ -84,8 +107,34 @@ namespace fsEco.Economy.JobGeneration
                             randomJobDescription = fsEco.PublicData.JobGeneration.JobTypes.Civilian.JobDescription.Descriptions[rng.Next(randomJobDescriptionCount)];
 
                             minPay = 500;
-                            minJobTypeCargoWeight = 50;
-                            maxJobTypeCargoWeight = 500;
+
+                            switch (aircraftType)
+                            {
+                                case 0: // All
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 1000;
+                                    break;
+                                case 1: // Passenger
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 800;
+                                    break;
+                                case 2: // Cargo
+                                    minJobTypeCargoWeight = 100;
+                                    maxJobTypeCargoWeight = 1500;
+                                    break;
+                                case 3: // Utility
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 1000;
+                                    break;
+                                case 4: // VIP
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 600;
+                                    break;
+                                default:
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 1000;
+                                    break;
+                            }
 
                             finalcargoWeight = rng.Next((int)minJobTypeCargoWeight, (int)maxJobTypeCargoWeight);
 
@@ -103,9 +152,6 @@ namespace fsEco.Economy.JobGeneration
                                     CargoWeight = rng.Next((int)minCargoWeight, (int)maxCargoWeight),
                                 });
                             }
-
-
-
                             break;
 
 
@@ -116,8 +162,34 @@ namespace fsEco.Economy.JobGeneration
                             randomJobDescription = fsEco.PublicData.JobGeneration.JobTypes.Medical.JobDescription.Descriptions[rng.Next(randomJobDescriptionCount)];
 
                             minPay = 1000;
-                            minJobTypeCargoWeight = 100;
-                            maxJobTypeCargoWeight = 10000;
+
+                            switch (aircraftType)
+                            {
+                                case 0: // All
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 1000;
+                                    break;
+                                case 1: // Passenger
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 800;
+                                    break;
+                                case 2: // Cargo
+                                    minJobTypeCargoWeight = 100;
+                                    maxJobTypeCargoWeight = 1500;
+                                    break;
+                                case 3: // Utility
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 1000;
+                                    break;
+                                case 4: // VIP
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 600;
+                                    break;
+                                default:
+                                    minJobTypeCargoWeight = 50;
+                                    maxJobTypeCargoWeight = 1000;
+                                    break;
+                            }
 
                             finalcargoWeight = rng.Next((int)minJobTypeCargoWeight, (int)maxJobTypeCargoWeight);
 
@@ -135,8 +207,6 @@ namespace fsEco.Economy.JobGeneration
                                     CargoWeight = rng.Next((int)minCargoWeight, (int)maxCargoWeight),
                                 });
                             }
-
-
                             break;
 
 
@@ -145,8 +215,37 @@ namespace fsEco.Economy.JobGeneration
                             randomJobDescription = fsEco.PublicData.JobGeneration.JobTypes.Military.JobDescription.Descriptions[rng.Next(randomJobDescriptionCount)];
 
                             minPay = 1500;
-                            minJobTypeCargoWeight = 200;
-                            maxJobTypeCargoWeight = 20000;
+
+
+                            switch (aircraftType)
+                            {
+                                case 0: // All
+                                    minJobTypeCargoWeight = 300;
+                                    maxJobTypeCargoWeight = 20000;
+                                    break;
+                                case 1: // Passenger
+                                    minJobTypeCargoWeight = 200;
+                                    maxJobTypeCargoWeight = 3000;
+                                    break;
+                                case 2: // Cargo
+                                    minJobTypeCargoWeight = 500;
+                                    maxJobTypeCargoWeight = 20000;
+                                    break;
+                                case 3: // Utility
+                                    minJobTypeCargoWeight = 300;
+                                    maxJobTypeCargoWeight = 8000;
+                                    break;
+                                case 4: // VIP
+                                    minJobTypeCargoWeight = 150;
+                                    maxJobTypeCargoWeight = 3000;
+                                    break;
+
+                                default:
+                                    minJobTypeCargoWeight = 300;
+                                    maxJobTypeCargoWeight = 20000;
+                                    break;
+                            }
+
 
                             finalcargoWeight = rng.Next((int)minJobTypeCargoWeight, (int)maxJobTypeCargoWeight);
 
